@@ -19,3 +19,9 @@ npm i npm-run-all -g
   
 `
 
+## 路由，服务器和客户端html结构要保持一致
+
+`
+npm i redux react-redux redux-logger redux-thunk -D
+
+`

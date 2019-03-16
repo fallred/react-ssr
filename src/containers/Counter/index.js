@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
-export default class Counter extends Component {
-    constructor(){
-        super();
-        this.state = {
-            number: 0
-        }
-    }
+import {connect} from 'react-redux';
+import actions from '../../store/actions/counter';
+class Counter extends Component {
     render(){
         return (
             <div>
-                <p>{this.state.number}</p>
+                <p>{this.props.number}</p>
                 <button onClick={()=>{
-                    this.setState({
-                        number: this.state.number + 1
-                    });
+                    // this.setState({
+                    //     number: this.state.number + 1
+                    // });
+                    this.props.increment();
                 }}>+</button>
             </div>
         );
     }
 }
+Counter = connect(
+    state => state.counter,
+    actions
+)(Counter);
+export default Counter;
