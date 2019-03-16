@@ -12,4 +12,10 @@ npm i npm-run-all -g
 
   "dev": "npm-run-all --parallel dev:**",
   批量并行执行dev:开头的所有命令
+
+
+  @babel/plugin-proposal-class-properties
+  类的属性，高级语法
+  
 `
+
