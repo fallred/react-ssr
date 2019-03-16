@@ -1,14 +1,20 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {StaticRouter} from 'react-router-dom';
 import Home from '../containers/Home';
 import Counter from '../containers/Counter';
+import routes from '../routes';
 import {renderToString} from 'react-dom/server';
 let express = require('express');
 let fs = require('fs');
 let app = express();
 // 把public当做静态文件的根目录
 app.use(express.static('public'));
-app.get('/', function(req,res){
-    let html = renderToString(<Counter />);
+app.get('*', function(req,res){
+    let html = renderToString(
+        <StaticRouter context={{}} location={req.path}>
+            {routes}
+        </StaticRouter>
+    );
     res.send(`
         <html>
             <head>
