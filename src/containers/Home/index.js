@@ -1,12 +1,28 @@
 import React,{Component} from 'react';
-export default class Home extends Component {
+import {connect} from 'react-redux';
+import actions from '../../store/actions/home';
+class Home extends Component {
+    componentWillMount(){
+        this.props.getHomeList();
+    }
     render(){
-        console.log(this.props.staticContext);
-        if (this.props.staticContext) {
-            this.props.staticContext.age = 10;
-        }
         return (
-            <div>home {this.props.staticContext ? this.props.staticContext.name : ''}</div>
+            <div className="row">
+                <div className="col-md-6 col-md-offset-3">
+                    <ul className="list-group">
+                        {
+                            this.props.list.map(item=>(
+                                <li key={item.id} className="list-group-item">{item.name}</li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
         );
     }
 }
+Home = connect(
+    state=>state.home,
+    actions
+)(Home);
+export default Home;
