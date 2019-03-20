@@ -160,6 +160,74 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./src/containers/App.js":
+/*!*******************************!*\
+  !*** ./src/containers/App.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-config */ "react-router-config");
+/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_config__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./src/components/Header/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var App =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(App, _Component);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: "render",
+    value: function render() {
+      console.log('this.props:', this.props);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container",
+        style: {
+          marginTop: 70
+        }
+      }, Object(react_router_config__WEBPACK_IMPORTED_MODULE_1__["renderRoutes"])(this.props.route.components)));
+    }
+  }]);
+
+  return App;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./src/containers/Counter/index.js":
 /*!*****************************************!*\
   !*** ./src/containers/Counter/index.js ***!
@@ -335,7 +403,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _containers_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./containers/Home */ "./src/containers/Home/index.js");
-/* harmony import */ var _containers_Counter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/Counter */ "./src/containers/Counter/index.js");
+/* harmony import */ var _containers_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/App */ "./src/containers/App.js");
+/* harmony import */ var _containers_Counter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/Counter */ "./src/containers/Counter/index.js");
+
 
 
 
@@ -346,17 +416,40 @@ __webpack_require__.r(__webpack_exports__);
 //     </Fragment>
 // );
 
+/*
+export default [
+    {
+        path: '/',
+        component: Home,
+        exact: true,
+        key: '/',
+        loadData:Home.loadData //加载数据， 如果此配置项有了这个属性，那么意味着需要加载异步数据
+    },
+    {
+        path: '/counter',
+        component: Counter,
+        key: '/counter'
+    }
+];
+*/
+// 要渲染多级路由，原来的方式不行了，
+
 /* harmony default export */ __webpack_exports__["default"] = ([{
   path: '/',
-  component: _containers_Home__WEBPACK_IMPORTED_MODULE_2__["default"],
-  exact: true,
-  key: '/',
-  loadData: _containers_Home__WEBPACK_IMPORTED_MODULE_2__["default"].loadData //加载数据， 如果此配置项有了这个属性，那么意味着需要加载异步数据
+  component: _containers_App__WEBPACK_IMPORTED_MODULE_3__["default"],
+  // 子路由
+  components: [{
+    path: '/',
+    component: _containers_Home__WEBPACK_IMPORTED_MODULE_2__["default"],
+    exact: true,
+    key: '/',
+    loadData: _containers_Home__WEBPACK_IMPORTED_MODULE_2__["default"].loadData //加载数据， 如果此配置项有了这个属性，那么意味着需要加载异步数据
 
-}, {
-  path: '/counter',
-  component: _containers_Counter__WEBPACK_IMPORTED_MODULE_3__["default"],
-  key: '/counter'
+  }, {
+    path: '/counter',
+    component: _containers_Counter__WEBPACK_IMPORTED_MODULE_4__["default"],
+    key: '/counter'
+  }]
 }]);
 
 /***/ }),
@@ -402,17 +495,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/server */ "react-dom/server");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _containers_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../containers/Home */ "./src/containers/Home/index.js");
-/* harmony import */ var _containers_Counter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../containers/Counter */ "./src/containers/Counter/index.js");
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Header */ "./src/components/Header/index.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes */ "./src/routes.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../store */ "./src/store/index.js");
-
-
+/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-config */ "react-router-config");
+/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_config__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/server */ "react-dom/server");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes */ "./src/routes.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store */ "./src/store/index.js");
 
 
 
@@ -424,15 +514,15 @@ __webpack_require__.r(__webpack_exports__);
   var context = {
     name: 'zfpx'
   };
-  var store = Object(_store__WEBPACK_IMPORTED_MODULE_8__["getServerStore"])(); // 获取要渲染的组件,matchPath是路由提供的工具方法，可以用来判断路径和路由对象是否匹配
+  var store = Object(_store__WEBPACK_IMPORTED_MODULE_6__["getServerStore"])(); // 获取要渲染的组件,matchPath是路由提供的工具方法，可以用来判断路径和路由对象是否匹配
   // 正则 /api/:id/
   // console.log('routes:',routes);
+  // 这个方法可以处理嵌套路由，
 
-  var matchRoutes = _routes__WEBPACK_IMPORTED_MODULE_6__["default"].filter(function (route) {
-    return Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["matchPath"])(req.path, route.path);
-  });
+  var matchedRoutes = Object(react_router_config__WEBPACK_IMPORTED_MODULE_2__["matchRoutes"])(_routes__WEBPACK_IMPORTED_MODULE_4__["default"], req.path);
+  console.log('matchedRoutes:', matchedRoutes);
   var promises = [];
-  matchRoutes.forEach(function (route) {
+  matchedRoutes.forEach(function (route) {
     if (route.loadData) {
       promises.push(route.loadData(store));
     }
@@ -441,21 +531,14 @@ __webpack_require__.r(__webpack_exports__);
   Promise.all(promises).then(function () {
     // 创建仓库的时候，仓库里的数据已经有默认值
     // console.log('store.getState():',store.getState());
-    var html = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_2__["renderToString"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_7__["Provider"], {
+    var html = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_3__["renderToString"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
       store: store
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["StaticRouter"], {
       context: {
         context: context
       },
       location: req.path
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "container",
-      style: {
-        marginTop: 70
-      }
-    }, _routes__WEBPACK_IMPORTED_MODULE_6__["default"].map(function (route) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], route);
-    }))))));
+    }, Object(react_router_config__WEBPACK_IMPORTED_MODULE_2__["renderRoutes"])(_routes__WEBPACK_IMPORTED_MODULE_4__["default"]))));
     res.send("\n            <html>\n                <head>\n                    <title>\u73E0\u5CF0ssr</title>\n                    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css\"  >\n                </head>\n                <body>\n                    <div id=\"root\">".concat(html, "</div>\n                    <script>\n                        window.context = {\n                            state:").concat(JSON.stringify(store.getState()), "\n                        }\n                    </script>\n                    <script src=\"/client.js\"></script>\n                </body>\n            </html>\n        "));
   });
 });
@@ -714,6 +797,17 @@ module.exports = require("react-dom/server");
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react-router-config":
+/*!**************************************!*\
+  !*** external "react-router-config" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-config");
 
 /***/ }),
 

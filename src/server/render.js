@@ -1,9 +1,7 @@
-import React, {Component,Fragment} from 'react';
+import React from 'react';
 import {StaticRouter,matchPath,Route} from 'react-router-dom';
+import {renderRoutes,matchRoutes} from 'react-router-config';
 import {renderToString} from 'react-dom/server';
-import Home from '../containers/Home';
-import Counter from '../containers/Counter';
-import Header from '../components/Header';
 import routes from '../routes';
 import {Provider} from 'react-redux';
 import {getServerStore} from '../store';
@@ -13,11 +11,11 @@ export default function (req, res) {
     // 获取要渲染的组件,matchPath是路由提供的工具方法，可以用来判断路径和路由对象是否匹配
     // 正则 /api/:id/
     // console.log('routes:',routes);
-    let matchRoutes = routes.filter(route=>{
-        return matchPath(req.path,route.path)
-    });
+    // 这个方法可以处理嵌套路由，
+    let matchedRoutes = matchRoutes(routes,req.path);
+    console.log('matchedRoutes:',matchedRoutes);
     let promises = [];
-    matchRoutes.forEach(route => {
+    matchedRoutes.forEach(route => {
         if (route.loadData) {
             promises.push(route.loadData(store));
         }
@@ -30,14 +28,7 @@ export default function (req, res) {
         let html = renderToString(
             <Provider store={store}>
                 <StaticRouter context={{context}} location={req.path}>
-                    <Fragment>
-                        <Header/>
-                        <div className="container" style={{marginTop: 70}}>
-                            {routes.map(route=>{
-                                return (<Route {...route} />)
-                            })}
-                        </div>
-                    </Fragment>
+                    {renderRoutes(routes)} 
                 </StaticRouter>
             </Provider>
         );
