@@ -13,4 +13,20 @@ module.exports = merge(base, {
     externals: [
         nodeExternal()
     ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'isomorphic-style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
+            }
+        ]
+    }
 });

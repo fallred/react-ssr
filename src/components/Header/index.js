@@ -1,8 +1,14 @@
 import React, {Component,Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import styles from './index.css';
 class Header extends Component {
+    componentWillMount(){
+        if (this.props.staticContext) {
+            // _getCss可以得到处理后的css源代码
+            this.props.staticContext.csses.push(styles._getCss());
+        }
+    }
     render () {
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -27,7 +33,7 @@ class Header extends Component {
                        {
                            this.props.user && (
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a>{this.props.user.username}</a></li>
+                                <li><span className={styles.user}>{this.props.user.username}</span></li>
                             </ul>
                            )
                        }
