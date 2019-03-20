@@ -660,7 +660,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "col-md-6 col-md-offset-3"
+        className: "col-md-6 col-md-offset-3"
       }, "\u4F60\u7684\u9875\u9762\u98DE\u4E86"));
     }
   }]);
@@ -726,9 +726,9 @@ function (_Component) {
       return this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "col-md-6 col-md-offset-3"
+        className: "col-md-6 col-md-offset-3"
       }, "\u4E2A\u4EBA\u4E2D\u5FC3")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/login"
+        to: "/login/"
       });
     }
   }]);
@@ -922,13 +922,14 @@ __webpack_require__.r(__webpack_exports__);
     var html = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_3__["renderToString"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
       store: store
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["StaticRouter"], {
-      context: {
-        context: context
-      },
+      context: context,
       location: req.path
     }, Object(react_router_config__WEBPACK_IMPORTED_MODULE_2__["renderRoutes"])(_routes__WEBPACK_IMPORTED_MODULE_4__["default"]))));
+    console.log('context=====:', context);
 
-    if (context.notFound) {
+    if (context.action == 'REPLACE') {
+      return res.redirect(302, context.url); // res.statusCode = 302;
+    } else if (context.notFound) {
       res.statusCode = 404;
     }
 

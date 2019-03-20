@@ -27011,7 +27011,7 @@ function renderRoutes(routes, extraProps, switchProps) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33255,7 +33255,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "col-md-6 col-md-offset-3"
+        className: "col-md-6 col-md-offset-3"
       }, "\u4F60\u7684\u9875\u9762\u98DE\u4E86"));
     }
   }]);
@@ -33319,9 +33319,9 @@ function (_Component) {
       return this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "col-md-6 col-md-offset-3"
+        className: "col-md-6 col-md-offset-3"
       }, "\u4E2A\u4EBA\u4E2D\u5FC3")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/login"
+        to: "/login/"
       });
     }
   }]);

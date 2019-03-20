@@ -26,12 +26,16 @@ export default function (req, res) {
         // console.log('store.getState():',store.getState());
         let html = renderToString(
             <Provider store={store}>
-                <StaticRouter context={{context}} location={req.path}>
+                <StaticRouter context={context} location={req.path}>
                     {renderRoutes(routes)} 
                 </StaticRouter>
             </Provider>
         );
-        if (context.notFound) {
+        console.log('context=====:',context);
+        if (context.action == 'REPLACE') {
+            return res.redirect(302,context.url);
+            // res.statusCode = 302;
+        } else if (context.notFound) {
             res.statusCode = 404;
         }
         console.log('store:',store.getState());

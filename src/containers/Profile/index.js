@@ -6,12 +6,12 @@ class Profile extends Component {
         return (
             this.props.user ?
             <div className="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div className="col-md-6 col-md-offset-3">
                    个人中心
                 </div>
             </div>
             :
-            <Redirect to="/login"/>
+            <Redirect to="/login/"/>
         );
     }
 }

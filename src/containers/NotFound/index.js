@@ -8,7 +8,7 @@ class NotFound extends Component {
     render(){
         return (
             <div className="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div className="col-md-6 col-md-offset-3">
                    你的页面飞了
                 </div>
             </div>

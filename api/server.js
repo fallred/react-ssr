@@ -14,6 +14,9 @@ app.use(session({
 //     origin: 'http://localhost:3000'
 // }));
 let users = [{id: 1,name: 'zfjg1'}, {id: 2, name:'zfjg2'}];
+app.get('/api/users',function(req,res){
+    res.json(users);
+  });
 app.post('/api/login',function(req,res){
     let user = req.body;
     req.session.user = user;
