@@ -32688,6 +32688,27 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.hydrate(react__WEBPACK_IMPORTED
 
 /***/ }),
 
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ // import {request} from 'https';
+// 创建一个axios的实例,配置baseURL的基准路径
+// 客户端访问3000
+
+/* harmony default export */ __webpack_exports__["default"] = (axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseUrl: '/'
+})); // request.get('/api/users');
+
+/***/ }),
+
 /***/ "./src/components/Header/index.js":
 /*!****************************************!*\
   !*** ./src/components/Header/index.js ***!
@@ -33051,6 +33072,27 @@ export default [
 
 /***/ }),
 
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ // import {request} from 'https';
+// 创建一个axios的实例,配置baseURL的基准路径
+// 服务器访问4000
+
+/* harmony default export */ __webpack_exports__["default"] = (axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseUrl: 'http://localhost:4000'
+})); // request.get('/api/users');
+
+/***/ }),
+
 /***/ "./src/store/action-types.js":
 /*!***********************************!*\
   !*** ./src/store/action-types.js ***!
@@ -33107,8 +33149,10 @@ __webpack_require__.r(__webpack_exports__);
     // 调接口
     // 返回一个函数，store.dispatch(action);
     // redux-thunk中间件
-    return function (dispatch, getState) {
-      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:4000/api/users').then(function (result) {
+    return function (dispatch, getState, request) {
+      // 如果是服务端读数据，则直接访问API服务器，4000
+      // 如果是客户端，则要访问3000的node服务器，让node服务器帮我们访问4000服务器
+      return request.get('/api/users').then(function (result) {
         var list = result.data; // console.log('list:', list);
 
         dispatch({
@@ -33137,17 +33181,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers/index.js");
+/* harmony import */ var _server_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../server/request */ "./src/server/request.js");
+/* harmony import */ var _client_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../client/request */ "./src/client/request.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers/index.js");
+
+
 
 
 
 
 function getServerStore() {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_5__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"].withExtraArgument(_server_request__WEBPACK_IMPORTED_MODULE_3__["default"]), redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
 }
 function getClientStore() {
   var initState = window.context.state;
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], initState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_5__["default"], initState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"].withExtraArgument(_client_request__WEBPACK_IMPORTED_MODULE_4__["default"]), redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
 }
 
 /***/ }),
