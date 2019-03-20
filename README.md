@@ -25,3 +25,6 @@ npm i npm-run-all -g
 npm i redux react-redux redux-logger redux-thunk -D
 
 `
+
+##启动后端服务
+nodemon ./api/server.js

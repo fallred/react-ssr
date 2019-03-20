@@ -7,5 +7,6 @@ export function getServerStore(){
 }
 
 export function getClientStore(){
-    return createStore(reducers,applyMiddleware(thunk,logger));
+    let initState = window.context.state;
+    return createStore(reducers, initState, applyMiddleware(thunk,logger));
 }
