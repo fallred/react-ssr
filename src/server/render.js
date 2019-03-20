@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {getServerStore} from '../store';
 export default function (req, res) {
     let context = {name: 'zfpx'};
-    let store = getServerStore();
+    let store = getServerStore(req);
     // 获取要渲染的组件,matchPath是路由提供的工具方法，可以用来判断路径和路由对象是否匹配
     // 正则 /api/:id/
     // console.log('routes:',routes);
@@ -15,12 +15,11 @@ export default function (req, res) {
     let matchedRoutes = matchRoutes(routes,req.path);
     console.log('matchedRoutes:',matchedRoutes);
     let promises = [];
-    matchedRoutes.forEach(route => {
-        if (route.loadData) {
-            promises.push(route.loadData(store));
+    matchedRoutes.forEach(item => {
+        if (item.route.loadData) {
+            promises.push(item.route.loadData(store));
         }
     });
-    // console.log('matchRoutes:',matchRoutes);
 
     Promise.all(promises).then(function(){
         // 创建仓库的时候，仓库里的数据已经有默认值
@@ -32,6 +31,10 @@ export default function (req, res) {
                 </StaticRouter>
             </Provider>
         );
+        if (context.notFound) {
+            res.statusCode = 404;
+        }
+        console.log('store:',store.getState());
         res.send(`
             <html>
                 <head>
@@ -49,6 +52,8 @@ export default function (req, res) {
                 </body>
             </html>
         `);
+    },(data)=>{
+        console.log('reject',data);
     });
 
 }

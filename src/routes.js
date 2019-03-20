@@ -6,6 +6,7 @@ import Counter from './containers/Counter';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
 import Profile from './containers/Profile';
+import NotFound from './containers/NotFound';
 // export default (
 //     <Fragment>
 //         <Route path="/" exact component={Home}/>
@@ -33,8 +34,9 @@ export default [
     {
         path: '/',
         component: App,
+        loadData:App.loadData,
         // 子路由
-        components: [
+        routes: [
             {
                 path: '/',
                 component: Home,
@@ -61,6 +63,10 @@ export default [
                 path: '/profile',
                 component: Profile,
                 key: '/profile'
+            },
+            {
+                component: NotFound,
+                key: '/notfound'
             }
         ]
     }

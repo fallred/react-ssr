@@ -24,5 +24,17 @@ export default {
                 });
             });
         }
+    },
+    getUser(){
+        return function(dispatch,getState, request){
+            return request.get('/api/user').then(function(result){
+                console.log(result);
+                let data = result.data;
+                dispatch({
+                    type:types.SET_SESSION,
+                    payload:data.data
+                });
+            });
+        }
     }
 }
